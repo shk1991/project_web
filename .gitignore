@@ -1,0 +1,12 @@
+*.log
+node_modules
+.npminstall.done
+.svn
+.DS_Store
+*.diff
+*.zip
+www
+README.html
+upload
+.idea
+
