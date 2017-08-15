@@ -4,7 +4,7 @@ import store from './store';
 import router from './router';
 import App from './app';
 
-import {dataFormat} from 'method';
+// import {dataFormat} from 'method';
 
  // router.beforeEach((to, from, next) => {
  //     if(!(to.path.slice(1) == "login")){
