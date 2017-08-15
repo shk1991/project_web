@@ -15,7 +15,7 @@
                 <a v-if="!isLoading" class="ui button" @click="submitForm()">登录</a>
                 <button v-if="isLoading" type="button" class="qc-log-btn lg" style="display:block;">
                     <div class="m-loading">
-                        <div class="loading">
+                        <div class="lo ading">
                             <div class="one"></div>
                             <div class="two"></div>
                             <div class="three"></div>
