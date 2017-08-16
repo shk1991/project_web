@@ -6,7 +6,9 @@ $redColor: #F43531;
 $bgColor: #F6FCFF;
 html{ position: relative;}
 html,body{ min-height: 100%; height: auto;}
-body{ font-size: 14px; color: #585858; min-width: 768px; overflow-x:auto;}
+body{ font-size: 14px; color: #585858; min-width: 1920px; width: 1920px; overflow-x:auto;
+	background: url("../images/body_bg.jpg") repeat 0 0;
+}
 
 @mixin bg($img,$x:100%,$y:100%){
 	background-repeat: no-repeat;
@@ -20,13 +22,6 @@ body{ font-size: 14px; color: #585858; min-width: 768px; overflow-x:auto;}
 									url('../../images/#{$img}\@2x.png') 2x,
 									url('../../images/#{$img}\@3x.png') 3x);
 	background-size: $x $y;
-}
-@mixin common-fixed($top:0){
-	position: fixed;
-	top: $top;
-	left: 50%;
-	width: 7.5rem;
-	margin-left: -3.75rem;
 }
 @mixin eps{
 	white-space: nowrap;
@@ -113,8 +108,6 @@ button{outline: none; border: none;}
 .page-content button{
 	height: 34px;
 }
-.clr{line-height: 0; padding: 0;}
-.clr:after{content:"";display:block;height:0;clear:both;visibility:hidden;zoom:1}
 
 .table-con{
 	padding: 10px 30px;
@@ -133,21 +126,7 @@ button{outline: none; border: none;}
 .table-list{
 	padding-top:35px;
 }
-.con-btn-box{
-	position:relative;
-	margin-bottom: 5px;
-	>button{
-		position: absolute;
-	}
-	.addBtn{
-		left: 0;
-	}
-	.downloadBtn{
-		background: transparent;
-		color:#619fd1;
-		right:0;
-	}
-}
+
 .pagination>li>a,.pagination>li>a:hover{
 	color:#808080;
 }
@@ -158,8 +137,6 @@ button{outline: none; border: none;}
 
 /* 2017 06 12 add css code */
 .top-header{
-	background-color: #000;
-	background-size: 100% 100%;
 	height: 60px;
 	line-height:60px;
 	text-align: center;
@@ -169,32 +146,67 @@ button{outline: none; border: none;}
 	color: #fff;
 }
 
+/* public style*/
+
+@mixin blackBg($opc:0.8){
+	background-color: rgba(0,0,0,$opc);
+}
+.ui-title{
+	@include blackBg
+}
+
 .main-container{
 	#menu-nav{
+		@include blackBg(0.2);
 		width: 190px;
 		float: left;
 		color: #fff !important;
+		padding-bottom: 30px;
+		padding-left: 15px;
 		a{ color:#fff;}
-		.title,.content{
+		.content{
 			padding-left: 15px;
 		}
 		.title{
-			padding: 15px .5em !important;
+			padding: 0 !important;
 			color: #fff !important;
 			position: relative;
-			> a{
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				left: .5rem;
-				right: 0;
-				line-height: 48px;
-				padding-left: 20px;
+			border-bottom:1px solid #ccc;
+			.mark{
+				display: inline-block;
+				span{
+					display: inline-block;
+				}
 			}
-			.angle{
-				float: right;
-				margin-right: 15px;
-				font-size: 16px;
+			.mark0{
+				vertical-align: middle;
+				span{
+					padding: 1px 2px;
+					background: red;
+				}
+			}
+			.mark1{
+				vertical-align: bottom;
+				span{
+					text-align: center;
+					border-bottom: 3px solid;
+					width: 30px;
+					margin-bottom: -1px;
+					&:nth-child(1){
+						border-color: red;
+						color: red;
+					}
+					&:nth-child(2){
+						border-color: yellow;
+						color: yellow;
+						margin-left: 5px;
+					}
+				}
+			}
+			> a{
+				display: inline-block;
+				line-height: 30px;
+				padding-left: 20px;
 			}
 		}
 		.nav-list{ padding-bottom: 8px;}
@@ -202,21 +214,21 @@ button{outline: none; border: none;}
 		.router-link-active{
 			color: #f9a732;
 			position: relative;
-			&::after {
-				border: 1px solid transparent;
-				display: block;
-				height: 0;
-				width: 0;
-				position: absolute;
-				right: 0;
-				top: 50%;
-				bottom: auto;
-				content: "";
-				transform: translateY(-50%);
-				border-width: 10px;
-				border-width: 6px 6px 6px 0;
-				border-right-color: #fff;
-			}
+			//&::after {
+			//	border: 1px solid transparent;
+			//	display: block;
+			//	height: 0;
+			//	width: 0;
+			//	position: absolute;
+			//	right: 0;
+			//	top: 50%;
+			//	bottom: auto;
+			//	content: "";
+			//	transform: translateY(-50%);
+			//	border-width: 10px;
+			//	border-width: 6px 6px 6px 0;
+			//	border-right-color: #fff;
+			//}
 		}
 		.content{
 			padding: 0 0 0 38px;
@@ -224,24 +236,23 @@ button{outline: none; border: none;}
 		.active,.animating{
 			background-color: #666;
 		}
-		&::before{
-			content: "";
-			display: block;
-			width: inherit;
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			z-index: -1;
-			background-color: #2d2d2c;
-			border-style: inherit;
-			border-color: inherit;
-			border-width: inherit;
-		}
+		//&::before{
+		//	content: "";
+		//	display: block;
+		//	width: inherit;
+		//	position: absolute;
+		//	top: 0;
+		//	bottom: 0;
+		//	left: 0;
+		//	z-index: -1;
+		//	background-color: #2d2d2c;
+		//	border-style: inherit;
+		//	border-color: inherit;
+		//	border-width: inherit;
+		//}
 	}
 	.main-content{
 		overflow: hidden;
-		background-color: #fff;
 		min-height:400px;
 		.page-body{
 			position: relative;
@@ -271,17 +282,6 @@ button{outline: none; border: none;}
 						border-color:rgba(255,255,255,.6) transparent transparent;
 					}
 				}
-			}
-		}
-		.footer{
-			margin-top: 35px;
-			padding: 8px;
-			line-height: 36px;
-			border-top: 3px double #e5e5e5;
-			font-size: 22px;
-			text-align: center;
-			.orange{
-				color:#ff892a;
 			}
 		}
 	}

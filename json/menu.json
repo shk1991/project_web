@@ -1,0 +1,31 @@
+fun({
+  "data":[
+    {
+      "title":"page A",
+      "path":"/index/a",
+      "type":0,
+      "codeNumber":"10"
+    },
+    {
+      "title":"page B",
+      "path":"/index/b",
+      "type":0,
+      "codeNumber":"08"
+    },
+    {
+      "title":"page C",
+      "path":"/index/c",
+      "type":1,
+      "firstNumber":12,
+      "secondNumber":2
+    },
+    {
+      "title":"page D",
+      "path":"/index/d",
+      "type":1,
+      "firstNumber":20,
+      "secondNumber":0
+    }
+  ],
+  "status":0
+})

@@ -3,7 +3,7 @@ function getPort(url){
     var commonInteface;
     var url = url || window.location.href;
     if(/(^localhost$)|(^10.10)|(^192.168)/.test(window.location.hostname) || (url.indexOf("stag.devops.ihangmei.com") > -1)){
-        commonInteface = "http://139.217.26.23:8080";   //测试
+        commonInteface = "";   //测试
     }else if(url.indexOf("api.stg.amol") > -1){
         commonInteface = "";    //预上线
     }else if(url.indexOf("prod.devops.ihangmei.com") > -1){
@@ -325,6 +325,7 @@ const publicMethod = function(t) {
             "data":{},
             "type":"post",
             "url":"",
+            "jsonpCallback":"",
             "callback":"",
             "errorback":""
         }
@@ -334,10 +335,10 @@ const publicMethod = function(t) {
         }
         $.ajax({
             type:opt.type,
-            contentType: "application/x-www-form-urlencoded",
             url : commonInteface + opt.url,
             dataType: opt.dataType,
             data:opt.data,
+            jsonpCallback:opt.jsonpCallback,
             success:function(result){
                 var status = result.status;
                 if(status == 0){

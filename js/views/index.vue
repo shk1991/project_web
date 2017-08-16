@@ -5,11 +5,8 @@
 
         <div class="main-container" id="main-container">
 
-            <div class="ui accordion" id="menu-nav">
-                <div class="title"><i class="edit icon"></i> <router-link tag="a" exact to="/index/a">page A</router-link></div>
-                <div class="title"><i class="edit icon"></i> <router-link tag="a" exact to="/index/b">page B</router-link></div>
-                <div class="title"><i class="edit icon"></i> <router-link tag="a" exact to="/index/c">page C</router-link></div>
-            </div>
+            <!--左侧菜单栏-->
+            <menu-nav></menu-nav>
 
             <div class="main-content">
                 <router-view></router-view>
@@ -20,6 +17,7 @@
 
 <script>
     import commonHead from "./common-head.vue";
+    import menuNav from "./menu-nav.vue";
     import {locateUrl} from "../modules/public.js"
     export default {
         data(){
@@ -30,7 +28,8 @@
             locateUrl.init(path);
         },
         components:{
-            commonHead
+            commonHead,
+            menuNav
         }
     }
 </script>

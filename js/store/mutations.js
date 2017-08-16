@@ -5,7 +5,12 @@ const clearUserInfo = (state) => {
     state.userInfo = null;
 }
 
+const setMenuArray = (state,arr) => {
+    state.menuArray = arr;
+}
+
 export {
     setUserInfo,
-    clearUserInfo
+    clearUserInfo,
+    setMenuArray
 }

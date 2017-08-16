@@ -16,7 +16,8 @@ const store = new Vuex.Store({
             down:"下架",
             del:"删除"
         },
-        userInfo:null
+        userInfo:null,
+        menuArray:[]
     },
     // getters,
     actions,

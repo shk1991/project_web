@@ -44,7 +44,8 @@ module.exports = {
         }),
         new ExtractTextPlugin('css/[name].css'),
         new CopyWebpackPlugin([
-            {from: 'images/tmp/**/*'}
+            {from: 'images/tmp/**/*'},
+            {from: 'json/',to:path.resolve(__dirname, DIST+"/json")}
         ]),
         new HtmlWebpackPlugin({
             filename: 'index.html',

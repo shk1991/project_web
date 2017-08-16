@@ -43,6 +43,8 @@ img {
 .clearfix {
   *zoom: 1; 
 }
+.clr{line-height: 0; padding: 0;}
+.clr:after{content:"";display:block;height:0;clear:both;visibility:hidden;zoom:1}
 
 a.a_c{
   transform: scale(1,1);
