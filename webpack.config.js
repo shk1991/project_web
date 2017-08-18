@@ -26,7 +26,8 @@ module.exports = {
     // 页面入口文件配置
     entry: {
         "main": ['whatwg-fetch','babel-polyfill','js/main.js'],
-        "vendor": ["js/components/requireJQ.js","js/components/semantic.js","js/components/bootstrap/js/bootstrap-table.min.js","js/components/bootstrap/js/bootstrap-table-zh-CN.js","js/components/bootstrap/js/jquery.jedate.min.js"]
+        "vendor": ["js/components/requireJQ.js","js/components/semantic.js","js/components/bootstrap/js/bootstrap-table.min.js","js/components/bootstrap/js/bootstrap-table-zh-CN.js","js/components/bootstrap/js/jquery.jedate.min.js"],
+        "echart": ["js/components/bootstrap/js/echarts_3.js"]
     },
     // 入口文件输出配置
     output: {
@@ -39,7 +40,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: ["common"],
-            chunks:['main','vendor'],
+            chunks:['main','vendor','echart'],
             minChunks: 2
         }),
         new ExtractTextPlugin('css/[name].css'),
@@ -58,11 +59,15 @@ module.exports = {
             },
             inject: "body",
             hash: true,
-            chunks: ["common","vendor","main"],
+            chunks: ['common','vendor','echart', 'main'],
             chunksSortMode: function(a, b) {
-               var orders = ['common','vendor', 'main'];
+               var orders = ['common','vendor','echart', 'main'];
                return orders.indexOf(a.names[0]) - orders.indexOf(b.names[0]);
             }
+        }),
+        new webpack.ProvidePlugin({
+            echarts: 'echarts',
+            'window.echarts': 'echarts'
         })
         // ,new webpack.ProvidePlugin({
         //     $: 'jquery',
