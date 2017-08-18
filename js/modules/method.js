@@ -43,6 +43,11 @@ const format3Time = (time) => {
     return dataFormat(time,"YYYY-MM-DD");
 }
 
+const format4Time = (time) => {
+    return dataFormat(time,"YYYY.MM.DD hh：mm：ss");
+}
+
+
 export {
     isIos,
     isMobile,
@@ -50,5 +55,6 @@ export {
     dataFormat,
     formatTime,
     format2Time,
-    format3Time
+    format3Time,
+    format4Time
 };

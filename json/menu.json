@@ -1,27 +1,38 @@
 fun({
   "data":[
     {
-      "title":"page A",
+      "title":"FO inlet press",
       "path":"/index/a",
       "type":0,
       "codeNumber":"10"
     },
     {
-      "title":"page B",
+      "title":"FO inlet temp",
       "path":"/index/b",
       "type":0,
       "codeNumber":"08"
     },
     {
-      "title":"page C",
-      "path":"/index/c",
-      "type":1,
-      "firstNumber":12,
-      "secondNumber":2
+    "title":"LO inlet press",
+    "path":"/index/c",
+    "type":0,
+    "codeNumber":"09"
+    },
+    {
+    "title":"LO inlet temp",
+    "path":"#0",
+    "type":0,
+    "codeNumber":"18"
+    },
+    {
+    "title":"LO inlet filter press",
+    "path":"#1",
+    "type":0,
+    "codeNumber":"10"
     },
     {
       "title":"page D",
-      "path":"/index/d",
+      "path":"#2",
       "type":1,
       "firstNumber":20,
       "secondNumber":0

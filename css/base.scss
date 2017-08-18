@@ -6,7 +6,7 @@ $redColor: #F43531;
 $bgColor: #F6FCFF;
 html{ position: relative;}
 html,body{ min-height: 100%; height: auto;}
-body{ font-size: 14px; color: #585858; min-width: 1920px; width: 1920px; overflow-x:auto;
+body{ font-size: 14px; color: #aeafaf; min-width: 1920px; width: 1920px; overflow-x:auto;
 	background: url("../images/body_bg.jpg") repeat 0 0;
 }
 
@@ -135,63 +135,191 @@ button{outline: none; border: none;}
 }
 .fixed-table-loading{ z-index: 9; }
 
+$f16:16px;
+$f15:15px;
+$f14:14px;
+$gery:#aeafaf;
+$orange:#c2240b;
+$yellow:#e59622;
+@mixin blackBg($opc:0.35){
+	background-color: rgba(0,0,0,$opc) !important;
+}
+
 /* header css code */
 .top-header{
-	height: 60px;
-	line-height:60px;
-	text-align: center;
-	border-bottom: 2px solid #f93;
+	height: 85px;
+	padding: 10px 12px 0;
 	z-index: 1000;
 	position: relative;
-	color: #fff;
+	margin-bottom: 18px;
+	.logo-box{
+		float: left;
+		min-width: 168px;
+		img{
+			display: block;
+
+		}
+		time{
+			display: block;
+			font-size: 12px;
+			line-height: 1;
+		}
+	}
+	.head-info{
+		width: 880px;
+		height: 70px;
+		float: left;
+		margin-left: 80px;
+		margin-right: 24px;
+		dt{
+			background: url("../images/tmp/nav_icon11.png") no-repeat center center;
+			@include blackBg(0.3);
+			width: 61px;
+			height: 69px;
+			float: left;
+		}
+		dd {
+			margin-left: 70px;
+			border-top:1px solid #535456;
+			font-size: $f15;
+			div{
+				border-bottom:1px solid #535456;
+				height: 35px;
+				line-height: 35px;
+				>i{
+					width: 26px;
+					height: 26px;
+					display: inline-block;
+					vertical-align: middle;
+					margin-right: 20px;
+					margin-top: -4px;
+				}
+				&.head-info-box1{
+					>i{
+						background: $orange url("../images/tmp/warn_icon1.png") no-repeat center center;
+					}
+				}
+				&.head-info-box2{
+					>i{
+						background: $yellow url("../images/tmp/warn_icon2.png") no-repeat center center;
+					}
+				}
+				.dropdown-icon{
+					@include blackBg(0.3);
+					width: 26px;
+					height: 26px;
+					line-height: 26px;
+					display: inline-block;
+					float: right;
+					margin-top: 4px;
+					text-align: center;
+				}
+			}
+		}
+	}
+	.head-tool-menu{
+		overflow: hidden;
+		li{
+			@include blackBg(0.3);
+			width: 58px;
+			height: 70px;
+			display: block;
+			float: left;
+			margin-right: 6px;
+			cursor: pointer;
+			&.home{
+				background: url("../images/tmp/nav_icon1.png") no-repeat center;
+			}
+			&.prev{
+				background: url("../images/tmp/nav_icon2.png") no-repeat center;
+			}
+			&.next{
+				background: url("../images/tmp/nav_icon3.png") no-repeat center;
+			}
+			&.user{
+				background: url("../images/tmp/nav_icon4.png") no-repeat center;
+			}
+			&.set{
+				background: url("../images/tmp/nav_icon5.png") no-repeat center;
+			}
+			&.tool6{
+				background: url("../images/tmp/nav_icon6.png") no-repeat center;
+			}
+			&.tool7{
+				background: url("../images/tmp/nav_icon7.png") no-repeat center;
+			}
+			&.tool8{
+				background: url("../images/tmp/nav_icon8.png") no-repeat center;
+			}
+			&.tool9{
+				background: url("../images/tmp/nav_icon9.png") no-repeat center;
+			}
+			&.close{
+				background: url("../images/tmp/nav_icon10.png") no-repeat center;
+				float: right;
+			}
+		}
+	}
 }
 
 /* public style*/
 
-@mixin blackBg($opc:0.8){
-	background-color: rgba(0,0,0,$opc);
-}
 .ui-title{
-	@include blackBg
+	@include blackBg;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 10px;
+	margin-bottom: 5px !important;
+	font-weight: normal;
 }
 
 .main-container{
 	#menu-nav{
 		@include blackBg(0.2);
-		width: 190px;
+		box-shadow: 2px 5px 5px rgba(0,0,0,.1);
+		width: 238px;
 		float: left;
-		color: #fff !important;
+		color: $gery !important;
 		padding-bottom: 30px;
-		padding-left: 15px;
-		a{ color:#fff;}
+		margin-left: 12px;
+		margin-right: 10px;
+
+
+		font-size: $f15;
+		.ui-title{
+			font-size: $f16;
+		}
 		.content{
 			padding-left: 15px;
 		}
 		.title{
 			padding: 0 !important;
-			color: #fff !important;
+			color: $gery !important;
 			position: relative;
-			border-bottom:1px solid #ccc;
+			border-bottom:1px solid #535456;
 			.mark{
 				display: inline-block;
+				position: absolute;
+				left: 0;
+				bottom: 0;
 				span{
 					display: inline-block;
+					padding-bottom: 5px;
 				}
 			}
 			.mark0{
-				vertical-align: middle;
 				span{
-					padding: 1px 2px;
-					background: red;
+					padding: 0 5px;
+					background: #c2240b;
+					height: 40px;
+					line-height: 40px;
 				}
 			}
 			.mark1{
-				vertical-align: bottom;
 				span{
 					text-align: center;
-					border-bottom: 3px solid;
-					width: 30px;
-					margin-bottom: -1px;
+					border-bottom: 4px solid;
+					width: 32px;
 					&:nth-child(1){
 						border-color: red;
 						color: red;
@@ -199,14 +327,34 @@ button{outline: none; border: none;}
 					&:nth-child(2){
 						border-color: yellow;
 						color: yellow;
-						margin-left: 5px;
+						margin-left: 3px;
 					}
 				}
 			}
 			> a{
-				display: inline-block;
-				line-height: 30px;
+				display: block;
+				height: 100%;
+				padding-top: 5px;
+				box-sizing: border-box;
 				padding-left: 20px;
+				&:hover{
+					color: #f9a732;
+				}
+			}
+			&.type0{
+				height: 48px;
+				a{
+					padding-top: 15px;
+					padding-left: 47px;
+				}
+			}
+			&.type1{
+				height: 35px;
+				margin-left: 7px;
+
+				a{
+					padding-left: 87px;
+				}
 			}
 		}
 		.nav-list{ padding-bottom: 8px;}

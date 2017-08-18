@@ -1,9 +1,9 @@
 <template>
     <div class="ui accordion" id="menu-nav">
         <div class="ui-title">
-            ABCDEFGH IGKLMN
+            VESSEL EQUIPMENT
         </div>
-        <div class="title" v-for="item in menuArray">
+        <div :class="['title',item.type == 0 ? 'type0' : 'type1']" v-for="item in menuArray">
             <div class="mark mark0" v-if="item.type == 0">
                 <span>{{item.codeNumber}}</span>
             </div>

@@ -1,8 +1,27 @@
 <template>
-    <article>
-        A page 内容
+    <article id="page-home">
+        <h3 class="ui-title">
+            <i class="icon-title icon01"></i>
+            M/E
+        </h3>
     </article>
 </template>
+
+<style lang="sass" scoped>
+    #page-home{
+        .ui-title{
+            display:flex;
+            .icon-title{
+                height: 100%;
+                width: 35px;
+                margin-right: 8px;
+            }
+            .icon01{
+                background: url("../../images/tmp/data_title_icon1.png") no-repeat center;
+            }
+        }
+    }
+</style>
 
 <script lang="ts">
     import "../../css/a.scss";
