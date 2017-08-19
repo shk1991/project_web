@@ -1,0 +1,13 @@
+$f16:16px;
+$f15:15px;
+$f14:14px;
+$gery:#aeafaf;
+$orange:#c2240b;
+$yellow:#e59622;
+$yellowFont:#ffa827;
+$lineColor:#535456;
+
+@mixin blackBg($opc:0.35){
+	background-color: rgba(0,0,0,$opc) !important;
+}
+

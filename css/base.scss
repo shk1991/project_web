@@ -1,13 +1,9 @@
-$blackColor: #242424;
-$greyColor: #7d7d7d;
-$greyColor2: #979797;
-$blueColor: #3283ff;
-$redColor: #F43531;
-$bgColor: #F6FCFF;
+
+@import "./common";
 html{ position: relative;}
 html,body{ min-height: 100%; height: auto;}
 body{ font-size: 14px; color: #aeafaf; min-width: 1920px; width: 1920px; overflow-x:auto;
-	background: url("../images/body_bg.jpg") repeat 0 0;
+	background: url("../images/body_bg.jpg") repeat 0 0; padding-bottom: 8px;
 }
 
 @mixin bg($img,$x:100%,$y:100%){
@@ -135,14 +131,21 @@ button{outline: none; border: none;}
 }
 .fixed-table-loading{ z-index: 9; }
 
-$f16:16px;
-$f15:15px;
-$f14:14px;
-$gery:#aeafaf;
-$orange:#c2240b;
-$yellow:#e59622;
-@mixin blackBg($opc:0.35){
-	background-color: rgba(0,0,0,$opc) !important;
+
+.orange{
+	color:$orange !important;
+}
+.yellow{
+	color:$yellowFont !important;
+}
+.more-link{
+	@include blackBg;
+	font-size: $f14;
+	padding: 2px 5px;
+	float: right;
+	&:hover{
+		color: $gery;
+	}
 }
 
 /* header css code */
@@ -180,10 +183,10 @@ $yellow:#e59622;
 		}
 		dd {
 			margin-left: 70px;
-			border-top:1px solid #535456;
+			border-top:1px solid $lineColor;
 			font-size: $f15;
 			div{
-				border-bottom:1px solid #535456;
+				border-bottom:1px solid $lineColor;
 				height: 35px;
 				line-height: 35px;
 				>i{
@@ -257,6 +260,7 @@ $yellow:#e59622;
 			&.close{
 				background: url("../images/tmp/nav_icon10.png") no-repeat center;
 				float: right;
+				margin-right: 0;
 			}
 		}
 	}
@@ -269,7 +273,6 @@ $yellow:#e59622;
 	height: 30px;
 	line-height: 30px;
 	padding-left: 10px;
-	margin-bottom: 5px !important;
 	font-weight: normal;
 }
 
@@ -296,7 +299,7 @@ $yellow:#e59622;
 			padding: 0 !important;
 			color: $gery !important;
 			position: relative;
-			border-bottom:1px solid #535456;
+			border-bottom:1px solid $lineColor;
 			.mark{
 				display: inline-block;
 				position: absolute;
@@ -304,7 +307,7 @@ $yellow:#e59622;
 				bottom: 0;
 				span{
 					display: inline-block;
-					padding-bottom: 5px;
+					padding-bottom: 3px;
 				}
 			}
 			.mark0{
@@ -334,7 +337,7 @@ $yellow:#e59622;
 			> a{
 				display: block;
 				height: 100%;
-				padding-top: 5px;
+				padding-top: 8px;
 				box-sizing: border-box;
 				padding-left: 20px;
 				&:hover{

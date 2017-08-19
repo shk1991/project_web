@@ -2,7 +2,7 @@ fun({
   "data":[
     {
       "title":"FO inlet press",
-      "path":"/index/a",
+      "path":"/index/pageHome",
       "type":0,
       "codeNumber":"10"
     },
@@ -31,11 +31,11 @@ fun({
     "codeNumber":"10"
     },
     {
-      "title":"page D",
+      "title":"G/E 1",
       "path":"#2",
       "type":1,
       "firstNumber":20,
-      "secondNumber":0
+      "secondNumber":8
     }
   ],
   "status":0

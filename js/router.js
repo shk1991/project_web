@@ -10,7 +10,7 @@ const index = r => require.ensure([], () => r(require('./views/index.vue')), 'gr
 // const login = resolve => require(['./views/login.vue'],resolve);
 
 //page a
-const a = resolve => require(['./views/a.vue'],resolve);
+const pageHome = resolve => require(['./views/pageHome.vue'],resolve);
 
 //page b
 const b = resolve => require(['./views/b.vue'],resolve);
@@ -21,11 +21,11 @@ const c = resolve => require(['./views/c.vue'],resolve);
 const routes = [
     {
         path: '/',
-        redirect: '/index/a'
+        redirect: '/index/pageHome'
     },
     {
         path: '/index',
-        redirect: '/index/a'
+        redirect: '/index/pageHome'
     },
     {
         path: '/index',
@@ -35,8 +35,8 @@ const routes = [
             keepAlive: false
         },
         children: [
-            { path: '',  component: a },
-            { path: 'a', component: a },
+            { path: '',  component: pageHome },
+            { path: 'pageHome', component: pageHome },
             { path: 'b', component: b },
             { path: 'c', component: c }
         ]

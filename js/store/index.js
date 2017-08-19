@@ -17,7 +17,8 @@ const store = new Vuex.Store({
             del:"删除"
         },
         userInfo:null,
-        menuArray:[]
+        menuArray:[],
+        commonRight:null
     },
     // getters,
     actions,

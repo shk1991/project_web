@@ -9,8 +9,13 @@ const setMenuArray = (state,arr) => {
     state.menuArray = arr;
 }
 
+const setCommonRight = (state,obj) => {
+    state.commonRight = obj;
+}
+
 export {
     setUserInfo,
     clearUserInfo,
-    setMenuArray
+    setMenuArray,
+    setCommonRight
 }
