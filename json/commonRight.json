@@ -4,42 +4,42 @@ funRight({
             {
             "title":"Fuel Economy Analysis",
             "path":"",
-            "img":"../../images/tmp/right_menu_icon1.png",
+            "img":"images/tmp/right_menu_icon1.png",
             },
             {
             "title":"Cylinder Pressure Analysis",
             "path":"",
-            "img":"../../images/tmp/right_menu_icon2.png",
+            "img":"images/tmp/right_menu_icon2.png",
             },
             {
             "title":"trend analysis",
             "path":"",
-            "img":"../../images/tmp/analyz_icon1.png",
+            "img":"images/tmp/analyz_icon1.png",
             },
             {
             "title":"performance declination analysis",
             "path":"",
-            "img":"../../images/tmp/right_menu_icon4.png",
+            "img":"images/tmp/right_menu_icon4.png",
             },
             {
             "title":"Vibration Analysis",
             "path":"",
-            "img":"../../images/tmp/right_menu_icon5.png",
+            "img":"images/tmp/right_menu_icon5.png",
             },
             {
             "title":"oil Analysis",
             "path":"",
-            "img":"../../images/tmp/right_menu_icon6.png",
+            "img":"images/tmp/right_menu_icon6.png",
             },
             {
             "title":"Equipment operating statistics",
             "path":"",
-            "img":"../../images/tmp/right_menu_icon7.png",
+            "img":"images/tmp/right_menu_icon7.png",
             },
             {
             "title":"Alarm distribution analysi",
             "path":"",
-            "img":"../../images/tmp/right_menu_icon8.png",
+            "img":"images/tmp/right_menu_icon8.png",
             }
         ],
       "Report":[
