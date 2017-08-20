@@ -51,7 +51,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html',
-            favicon: 'images/favicon.ico',
+            //favicon: 'images/favicon.ico',
             minify: {
                 minimize: true,
                 removeComments: true,
@@ -218,6 +218,7 @@ module.exports = {
         ],
         extensions: ['.ts','.js','.vue'],
         alias: {
+            "echarts":          "js/components/bootstrap/js/echarts_3.js",
             "vue":              "js/libs/vue.common.js",
             "method":           "js/modules/method.js",
             "eventHub":         'js/modules/eventHub.js',
