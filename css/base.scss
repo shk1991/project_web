@@ -77,6 +77,71 @@ select.ui.dropdown{
 	background-color: rgba(0,0,0,.6);
 }
 
+.ui.checkbox label{
+	padding-left: 20px;
+	color: $gery !important;;
+	margin-right: 8px !important;
+	font-size: 13px;
+}
+.ui.checkbox	label:before{
+	background: transparent !important;
+	border: 1px solid $gery !important;
+	width: 15px;
+	height: 15px;
+}
+.ui.checkbox input:checked~label:after{
+	color: $gery;
+	font-weight: normal;
+	font-size: 14px;
+}
+
+.ui.dropdown{
+	&.active{
+		> .ui-title-button{
+			@include blackBg(.5);
+		}
+	}
+	.menu{
+		border-radius: 0;
+		@include blackBg(.5);
+		color: $gery;
+		margin-top: 2px;
+		.item{
+			padding-left: 6px !important;
+			padding-right: 6px !important;
+		}
+	}
+}
+
+.ui-title-button{
+	@include blackBg(.3);
+	font-size: $f15;
+	padding: 1px 10px;
+	display: inline-block;
+	margin-left: 10px;
+	cursor: pointer;
+	vertical-align: middle;
+	line-height: 1;
+	&:first-child{
+		margin-left: 0;
+	}
+	&.default{
+		cursor: default;
+		pointer-events: none;
+	}
+	img{display: block;}
+}
+
+.padding{
+	&.tb{ padding-bottom: 0; padding-top: 0;}
+	&.lr{ padding-left: 0; padding-right: 0;}
+	&.tp{ padding-top: 0;}
+	&.bp{ padding-bottom: 0;}
+	&.lp{ padding-left: 0;}
+	&.rp{ padding-right: 0;}
+	&.nop{ padding: 0;}
+}
+
 .table-break{
 	td:not(.no-break){
 		word-break: break-all !important;
@@ -274,6 +339,46 @@ button{outline: none; border: none;}
 	line-height: 30px;
 	padding-left: 10px;
 	font-weight: normal;
+}
+
+.ui-messages{
+	@include blackBg(.2);
+	position: fixed;
+	bottom: 8px;
+	left: 12px;
+	width: 238px;
+	height: 40px;
+	.icon-broadcast{
+		background: url("../images/tmp/msg_icon.png") no-repeat center;
+		float: left;
+		width: 28px;
+		height: 28px;
+		position: relative;
+		margin: 9px 20px 0 5px;
+		.text{
+			background-color: #12a70a;
+			border-radius: 50%;
+			font-size: 10px;
+			width: 16px;
+			height: 16px;
+			padding: 3px 0 0 2px;
+			line-height: 1;
+			display: flex;
+			color: #fff;
+			position: absolute;
+			top: -7px;
+			right: -7px;
+			z-index: 10;
+
+		}
+	}
+	p{
+		line-height: 40px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		margin-right: 10px;
+	}
 }
 
 .main-container{

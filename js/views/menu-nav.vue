@@ -13,6 +13,17 @@
             </div>
             <router-link tag="a" exact :to="item.path">{{item.title}}</router-link>
         </div>
+
+        <!--实时消息提示-->
+        <div class="ui-messages">
+            <div class="icon-broadcast">
+                <span class="text">10</span>
+            </div>
+            <p>
+                LT water inlet temp......
+            </p>
+        </div>
+
     </div>
 </template>
 

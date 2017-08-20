@@ -12,7 +12,31 @@
                 <div class="con-box-data">
                     <span>M/E Data</span>
                     <div>
-                        echart
+                        <div class="ui form chart-tool-box">
+                            <div class="inline field">
+                                <div class="ui checkbox checked" v-for="(item,key) in chartSeleted" @click="refreshChart(key)">
+                                    <input type="checkbox" tabindex="0" class="hidden" :checked="item">
+                                    <label>{{key}}</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ui fluid" id="js-echart"></div>
+                        <div class="chart-set-box" id="chart-select">
+                            <div class="ui dropdown">
+                                <div class="ui-title-button">SET</div>
+                                <div class="menu">
+                                    <div class="item ui checkbox checked" v-for="(item,key) in chartSeleted" @click="refreshChart(key)">
+                                        <input type="checkbox" tabindex="0" class="hidden" :checked="item">
+                                        <label>{{key}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-title-button padding nop">
+                                <img src="../../images/tmp/refresh_icon.png" />
+                            </div>
+
+                        </div>
                     </div>
                 </div>
                 <div class="con-box-tool">
@@ -201,9 +225,17 @@
                 background: url("../../images/tmp/data_title_icon3.png") no-repeat center;
             }
         }
+        .chart-tool-box{
+            text-align: right;
+            margin-top: -5px;
+        }
+        .chart-set-box{ text-align: right; margin-top: 10px;}
+        #js-echart{
+            height: 130px;
+        }
         .page-con-box{
             @include blackBg(.2);
-            overflow: hidden;
+            /*overflow: hidden;*/
             padding: 10px;
             > div{
                 position: relative;
@@ -317,17 +349,27 @@
     import {publicMethod} from "../modules/public";
     import {mapState,mapActions,mapMutations} from "vuex";
 
-    let pMethos;
+    let pMethos,vEcharts;
 
     export default{
         data(){
             return {
-                infoData:{}
+                infoData:{},
+                chartLegend:[],
+                chartOption:{},
+                chartSeleted:{}
             }
         },
         mounted(){
             pMethos = publicMethod(this);   //引入公共方法
+            vEcharts = echarts.init(document.getElementById("js-echart"),"macarons");
             this.getInfoData();
+            this.drawChart();
+            this.getChartData();
+            this.$nextTick(()=>{
+                $('.ui.checkbox').checkbox();
+                $('#chart-select .dropdown').dropdown();
+            })
         },
         methods: {
             getInfoData(){
@@ -341,6 +383,135 @@
                         _this.infoData = result || {};
                     }
                 });
+            },
+            getChartData(){
+                var _this = this;
+                var url = "json/homeChart.json";
+
+                pMethos.ajaxRequest({
+                    url:url,
+                    type:"get",
+                    jsonpCallback:"funHomeChart",
+                    callback(result){
+                        _this.drawChart(result);
+                    }
+                });
+            },
+            setChartLegend(obj){
+                var _arr = [];
+                var option = {};
+                for(var _o in obj){
+                    if(_o == "date"){
+                        continue;
+                    }
+                    _arr.push(_o);
+                    option[_o] = true;
+
+                }
+                this.chartSeleted = option;
+                return _arr;
+            },
+            setSeriesData(arr){
+                var _arr = [];
+                var legendArray = this.chartLegend;
+                var legendColor = ["#00cbfe","red","yellow"];
+                for(var i= 0,l=legendArray.length; i<l; i++){
+                    var obj = {
+                        name:legendArray[i],
+                        type:"line",
+                        data:arr[i],
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        },
+                        itemStyle:{
+                            normal:{
+                                color:legendColor[i]
+                            }
+                        }
+                    }
+                    _arr.push(obj);
+                }
+                return _arr;
+            },
+            refreshChart(key){
+                this.chartSeleted[key] = !this.chartSeleted[key];
+                vEcharts.setOption(this.chartOption);
+            },
+            drawChart(arr){
+                var _this = this;
+                var $lineColor = "#aeafaf";
+
+                var xAxisData=[],seriesData=[],_arr = [];
+                for(let i in arr){
+                    var obj = arr[i];
+                    if(i == 0){
+                        this.chartLegend = this.setChartLegend(obj);
+                    }
+                    xAxisData.push(obj.date);
+
+                    for(let x in this.chartLegend){
+                        if(i == 0){
+                            _arr[x] = [];
+                        }
+                        _arr[x].push(obj[this.chartLegend[x]]);
+                    }
+                }
+
+                seriesData = this.setSeriesData(_arr);
+
+                var option = {
+                    tooltip : {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        show:false,
+                        data:_this.chartLegend,
+                        selected:_this.chartSeleted
+                    },
+                    grid:{
+                        top:20,
+                        bottom:20,
+                        left:20,
+                        right:30
+                    },
+                    calculable : true,
+                    xAxis : [
+                        {
+                            type : 'category',
+                            boundaryGap : false,
+                            data : xAxisData,
+                            axisLine:{
+                                show:true,
+                                lineStyle:{
+                                    color:$lineColor
+                                }
+                            }
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value',
+                            axisLine:{
+                                show:true,
+                                lineStyle:{
+                                    color:$lineColor
+                                }
+                            },
+                            splitLine:{
+                                lineStyle:{
+                                    color:"#404142"
+                                }
+                            }
+                        }
+                    ],
+                    series : seriesData
+                };
+
+                _this.chartOption = Object.assign({},option);
+                vEcharts.setOption(_this.chartOption);
+
             }
         },
         computed:{
