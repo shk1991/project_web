@@ -1,18 +1,18 @@
 /* creat by sunhongkui */
-function getPort(url){
-    var commonInteface;
-    var url = url || window.location.href;
-    if(/(^localhost$)|(^10.10)|(^192.168)/.test(window.location.hostname) || (url.indexOf("stag.devops.ihangmei.com") > -1)){
-        commonInteface = "";   //测试
-    }else if(url.indexOf("api.stg.amol") > -1){
-        commonInteface = "";    //预上线
-    }else if(url.indexOf("prod.devops.ihangmei.com") > -1){
-        commonInteface = "http://api.amol.com.cn";   //正式环境
-    }
-    return commonInteface;
-}
+//function getPort(url){
+//    var commonInteface;
+//    var url = url || window.location.href;
+//    if(/(^localhost$)|(^10.10)|(^192.168)/.test(window.location.hostname) || (url.indexOf("stag.devops.ihangmei.com") > -1)){
+//        commonInteface = "";   //测试
+//    }else if(url.indexOf("api.stg.amol") > -1){
+//        commonInteface = "";    //预上线
+//    }else if(url.indexOf("prod.devops.ihangmei.com") > -1){
+//        commonInteface = "http://api.amol.com.cn";   //正式环境
+//    }
+//    return commonInteface;
+//}
 
-const commonInteface = getPort();
+const commonInteface = "";
 
 /*************** confirm *********************/
 const confirmFn = (function(){   //确认操作提示方法

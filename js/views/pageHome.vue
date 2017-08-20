@@ -35,7 +35,6 @@
                             <div class="ui-title-button padding nop">
                                 <img src="../../images/tmp/refresh_icon.png" />
                             </div>
-
                         </div>
                     </div>
                 </div>
