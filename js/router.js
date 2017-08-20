@@ -18,6 +18,9 @@ const b = resolve => require(['./views/b.vue'],resolve);
 //page c
 const c = resolve => require(['./views/c.vue'],resolve);
 
+//page stateEvaluation
+const stateEvaluation = resolve => require(['./views/stateEvaluation.vue'],resolve);
+
 const routes = [
     {
         path: '/',
@@ -38,7 +41,9 @@ const routes = [
             { path: '',  component: pageHome },
             { path: 'pageHome', component: pageHome },
             { path: 'b', component: b },
-            { path: 'c', component: c }
+            { path: 'c', component: c },
+            { path: 'stateEvaluation', component: stateEvaluation }
+            
         ]
     },
     // {

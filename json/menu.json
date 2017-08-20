@@ -20,7 +20,7 @@ fun({
     },
     {
     "title":"LO inlet temp",
-    "path":"#0",
+    "path":"/index/stateEvaluation",
     "type":0,
     "codeNumber":"18"
     },
