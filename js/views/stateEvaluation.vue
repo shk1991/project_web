@@ -1,22 +1,26 @@
 <template>
 	<article id="pageState">
-		<div class="state-nav-title">M/E</div>
+		<div class="state-nav-title">Health Status Assessment   >>   M/E Health Status Overview</div>
 	    <div class="state-left">
-            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-	        <h3 class="state-title">afadf</h3>
+            
+	        
             <div class="con-box">
+                <h3 class="state-title">Fuel Efficiency Analysis</h3>
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
                 <div id="stateLineChart" ></div>
             </div>
             
-            <div class="news-context-box">
+            <div class="engine-box">
+                <h3 class="state-title">M/E Fault Alarms:</h3>
                 <ul>
                     <li></li>
                     <li></li>
                     <li></li>
                 </ul>
-                <div>
-                    <img src="../images/pc-banner2.jpg">
-                    <img src="../images/pc-banner3.jpg">
+                <div class="img-list">
+                    <img src="../../images/tmp/img1.png">
+                    <img src="../../images/tmp/img1.png">
+                    <img src="../../images/tmp/img1.png">
                 </div>
                 
             </div>
@@ -25,20 +29,25 @@
 	    <div class="state-right">
 	        
 	    </div>
+        
+
 	</article>
 </template>
 
 <style lang="sass" scoped>
    @import "../../css/common";
 	.state-nav-title{ background-color:rgba(0,0,0,.2); color:#fff; font-size:15px; line-height: 20px}
-	.state-left{ float: left;width: 576px; height:630px;color:#fff;}
+	.state-left{ float: left;width: 576px; color:#fff;margin-top: 10px;}
 	.state-right{float: left;width: 1061px;background-color:rgba(0,0,0,.2); color:#fff;}
-    #pageState .con-box{ width:574px;height:330px;background-color:rgba(0,0,0,.2); border: 1px solid #fff; height:335px; }
+    #pageState .con-box{ width:574px;height:330px;background-color:rgba(0,0,0,.2); }
+    #pageState .con-box .state-title{ border-bottom:1px solid #535456; line-height: 56px; padding: 0 14px; font-weight: normal; font-size:15px;}
     #stateLineChart{height: 230px;}
-    .news-context-box{height:350px; overflow-y:auto; color:#555; line-height:24px;}
-    .news-context-box img{ margin:10px 0; display:block; text-align:center; margin:0 auto;}
-    .news-pop-box .close-btn{ width:36px; height:36px; position:absolute; right:10px; top:10px;z-index:1001;}
-    .news-pop-box .title{color:#b82a42; font-size:22px;}
+    .engine-box{color:#555; line-height:24px;background-color:rgba(0,0,0,.2);margin-top:10px;}
+    .engine-box .state-title{ border-bottom:1px solid #535456; line-height: 56px; padding: 0 14px; font-weight: normal; font-size:15px;}
+    #stateLineChart{height: 230px;}
+    .engine-box img{ margin:10px 0; display:block; text-align:center; margin:0 auto;}
+    .img-list{height:640px; overflow-y:auto; }
+    .engine-box .title{color:#b82a42; font-size:22px;}
 </style>
 
 <script>
@@ -66,32 +75,18 @@
 
                 // 指定图表的配置项和数据
                 var option = {
-                        backgroundColor: '#2c343c',
+                        //backgroundColor: '#2c343c',
                         title: {
-                            text: 'Fuel Efficiency Analysis',
+                            text: 'Fuel Efficiency (g/kwh)',
                             textStyle: {
-                               color: 'rgba(255, 255, 255, 0.8)'
+                               color: 'rgba(255, 255, 255, 0.8)',
+                               fontSize:'12px'
                             },
-                            subtext: 'Fuel Efficiency (g/kwh)'
                         },
                         tooltip: {
                             trigger: 'axis'
                         },
-                        legend: {
-                            data:['最高气温']
-                        },
-                        toolbox: {
-                            show: true,
-                            feature: {
-                                dataZoom: {
-                                    yAxisIndex: 'none'
-                                },
-                                dataView: {readOnly: false},
-                                magicType: {type: ['line', 'bar']},
-                                restore: {},
-                                saveAsImage: {}
-                            }
-                        },
+                        
                         xAxis:  {
                             type: 'category',
                             boundaryGap: false,
@@ -113,6 +108,9 @@
                                 lineStyle:{
                                     color:$lineColor
                                 }
+                            },
+                            splitLine: {
+                                show: false
                             }
                         },
                         series: [
