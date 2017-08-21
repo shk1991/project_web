@@ -13,7 +13,7 @@
                         <td :colspan="keyName.length">暂无数据</td>
                     </tr>
                     <tr class="center aligned" v-for="item in tableData">
-                        <td v-for="key in keyName">{{item[key]}}</td>
+                        <td v-for="key in keyName" v-html="columnFormat ? columnFormat(key,item[key]) : item[key]"></td>
                     </tr>
                 </tbody>
             </table>
@@ -25,7 +25,7 @@
     import {publicMethod} from "../modules/public";
     let pMethos;
     export default{
-        props:["tableTitle","keyName","column","src","tableJson"],
+        props:["tableTitle","keyName","column","src","tableJson","columnFormat"],
         data(){
             return{
                 tableData:[]
