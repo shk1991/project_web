@@ -9,6 +9,8 @@ const index = r => require.ensure([], () => r(require('./views/index.vue')), 'gr
 //登录
 // const login = resolve => require(['./views/login.vue'],resolve);
 
+const tableDemo = resolve => require(['./views/tableDemo.vue'],resolve);
+
 //page a
 const pageHome = resolve => require(['./views/pageHome.vue'],resolve);
 
@@ -46,14 +48,11 @@ const routes = [
             
         ]
     },
-    // {
-    //     path: '/login',
-    //     name: 'login',
-    //     component: login,
-    //     meta: {
-    //         keepAlive: false
-    //     }
-    // }
+    {
+        path: '/tableDemo',
+        name: 'tableDemo',
+        component: tableDemo
+    }
 ];
 
 export default new Router({

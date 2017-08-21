@@ -56,7 +56,7 @@
             })   
 
         }, 
-        methods: {
+        methods:{
             drawGraph(id) {  
                 // 基于准备好的dom，初始化echarts实例
                 this.chart = echarts.init(document.getElementById('stateLineChart'));
