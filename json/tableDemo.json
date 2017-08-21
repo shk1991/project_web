@@ -1,0 +1,211 @@
+funTableDemo({
+  "data": {
+    "aaa": [
+      {
+        "title": "a",
+        "keyName": [
+          "img",
+          "path",
+          "title"
+        ],
+        "column": [
+          "图片",
+          "路径",
+          "标题"
+        ],
+        "tableJson": [
+          {
+            "title": "Equipment operating statistics",
+            "path": "",
+            "img": "images/tmp/right_menu_icon7.png"
+          },
+          {
+            "title": "Alarm distribution analysi",
+            "path": "",
+            "img": "images/tmp/right_menu_icon8.png"
+          }
+        ]
+      },
+      {
+        "title": "aa",
+        "keyName": [
+          "img",
+          "path",
+          "title"
+        ],
+        "column": [
+          "图片",
+          "路径",
+          "标题"
+        ],
+        "tableJson": [
+          {
+            "title": "Equipment operating statistics",
+            "path": "",
+            "img": "images/tmp/right_menu_icon7.png"
+          },
+          {
+            "title": "Alarm distribution analysi",
+            "path": "",
+            "img": "images/tmp/right_menu_icon8.png"
+          }
+        ]
+      }
+    ],
+    "bbb": [
+      {
+        "title": "b",
+        "keyName": [
+          "img",
+          "path",
+          "title"
+        ],
+        "column": [
+          "图片",
+          "路径",
+          "标题"
+        ],
+        "tableJson": [
+          {
+            "title": "Equipment operating statistics",
+            "path": "",
+            "img": "images/tmp/right_menu_icon7.png"
+          },
+          {
+            "title": "Alarm distribution analysi",
+            "path": "",
+            "img": "images/tmp/right_menu_icon8.png"
+          }
+        ]
+      },
+      {
+        "title": "bb",
+        "keyName": [
+          "img",
+          "path",
+          "title"
+        ],
+        "column": [
+          "图片",
+          "路径",
+          "标题"
+        ],
+        "tableJson": [
+          {
+            "title": "Equipment operating statistics",
+            "path": "",
+            "img": "images/tmp/right_menu_icon7.png"
+          },
+          {
+            "title": "Alarm distribution analysi",
+            "path": "",
+            "img": "images/tmp/right_menu_icon8.png"
+          }
+        ]
+      },
+      {
+        "title": "bbb",
+        "keyName": [
+          "img",
+          "path",
+          "title"
+        ],
+        "column": [
+          "图片",
+          "路径",
+          "标题"
+        ],
+        "tableJson": [
+          {
+            "title": "Equipment operating statistics",
+            "path": "",
+            "img": "images/tmp/right_menu_icon7.png"
+          },
+          {
+            "title": "Alarm distribution analysi",
+            "path": "",
+            "img": "images/tmp/right_menu_icon8.png"
+          }
+        ]
+      }
+    ],
+    "ccc": [
+      {
+        "title": "c",
+        "keyName": [
+          "img",
+          "path",
+          "title"
+        ],
+        "column": [
+          "图片",
+          "路径",
+          "标题"
+        ],
+        "tableJson": [
+          {
+            "title": "Equipment operating statistics",
+            "path": "",
+            "img": "images/tmp/right_menu_icon7.png"
+          },
+          {
+            "title": "Alarm distribution analysi",
+            "path": "",
+            "img": "images/tmp/right_menu_icon8.png"
+          }
+        ]
+      },
+      {
+        "title": "cc",
+        "keyName": [
+          "img",
+          "path",
+          "title"
+        ],
+        "column": [
+          "图片",
+          "路径",
+          "标题"
+        ],
+        "tableJson": [
+          {
+            "title": "Equipment operating statistics",
+            "path": "",
+            "img": "images/tmp/right_menu_icon7.png"
+          },
+          {
+            "title": "Alarm distribution analysi",
+            "path": "",
+            "img": "images/tmp/right_menu_icon8.png"
+          }
+        ]
+      },
+      {
+        "title": "ccc",
+        "keyName": [
+          "img",
+          "path",
+          "title"
+        ],
+        "column": [
+          "图片",
+          "路径",
+          "标题"
+        ],
+        "tableJson": [
+          {
+            "title": "Equipment operating statistics",
+            "path": "",
+            "img": "images/tmp/right_menu_icon7.png"
+          },
+          {
+            "title": "Alarm distribution analysi",
+            "path": "",
+            "img": "images/tmp/right_menu_icon8.png"
+          }
+        ]
+      }
+    ],
+  },
+  "status": 0
+})
