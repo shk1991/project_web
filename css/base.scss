@@ -132,6 +132,38 @@ select.ui.dropdown{
 	img{display: block;}
 }
 
+/* tab-nav menu style*/
+.ui.menu{
+	border-radius: 0;
+	border: none !important;
+	a{
+		height: 42px;
+		padding-right: 40px !important;
+		padding-left: 40px !important;
+		color: $gery !important;
+		margin-right: 5px;
+		@include blackBg;
+	}
+	.active{
+		border: none !important;
+		@include blackBg(.7);
+	}
+}
+
+.common-body{
+	position: relative;
+	.common-con{
+		height: 1000px;
+		@include blackBg(.2);
+		margin-top: 2px;
+		.common-table{
+			width: 774px;
+			margin: 0 25px;
+			float: left;
+		}
+	}
+}
+
 .padding{
 	&.tb{ padding-bottom: 0; padding-top: 0;}
 	&.lr{ padding-left: 0; padding-right: 0;}

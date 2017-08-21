@@ -14,6 +14,9 @@ const tableDemo = resolve => require(['./views/tableDemo.vue'],resolve);
 //page a
 const pageHome = resolve => require(['./views/pageHome.vue'],resolve);
 
+//page 传感器分析
+const sensorAnalysis = resolve => require(['./views/sensorAnalysis.vue'],resolve);
+
 //page b
 const b = resolve => require(['./views/b.vue'],resolve);
 
@@ -44,8 +47,8 @@ const routes = [
             { path: 'pageHome', component: pageHome },
             { path: 'b', component: b },
             { path: 'c', component: c },
-            { path: 'stateEvaluation', component: stateEvaluation }
-            
+            { path: 'stateEvaluation', component: stateEvaluation },
+            { path:'sensorAnalysis', component:sensorAnalysis }
         ]
     },
     {
