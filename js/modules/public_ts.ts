@@ -3,7 +3,8 @@ import {commonInteface} from "./public.js";
 let $ = (window as any).$;
 class CreatTableMethod{
     vue:any;
-    dataName:String = "result"; //由于不同接口返回的字段名称不一致，特加此变量区分，差评
+    ele:String = "#tableContent";   //默认实例化table dom id
+    dataName:String = "result"; //由于不同接口返回的字段名称不一致，特加此变量区分
     callback:any = null;    //如果需要回传data，则添加此回调方法
     tableOption:Object = {    //公共option
         striped: true,
@@ -11,37 +12,55 @@ class CreatTableMethod{
         pageNumber:1,
         pageSize : 10,
     };
-    defaultOption:any = {  //默认请求表格数据option
-        method: 'post',
-        contentType: "application/x-www-form-urlencoded",
-        dataType : "json",
-        sidePagination : "server", // 客户端处理分页
-        responseHandler:(function(_this:any){
-            return function(data:any){
-
-                if(_this.callback && typeof _this.callback == "function"){
-                    _this.callback(data);
-                }
-
-                if(data.status != 0){
-                    alert(data.message);
-                    _this.vue.$router.push("/login");
-                }
-                return{
-                    "total":data.data.totalElements,
-                    "rows":data.data[_this.dataName] || []
-                }
-            }
-        }(this)),
-    };
 
     constructor(param:any){
-        if(param.defaultOption){
-            Object.assign(this.tableOption,param.defaultOption)
-        }else{
-            Object.assign(this.tableOption,this.defaultOption)
-        }
         this.vue = param.vue;
+    }
+
+    //实例化表格默认参数
+    getDefaultOption(ele:String=null,dataName:any=null,callback:any=null):Object{
+        if(!$(ele).length){
+            console.warn("实例化table dom 对象有误");
+        }
+        let defaultOption:Object = {  //默认请求表格数据option
+            method: 'post',
+            dataType : "json",
+            contentType: "application/x-www-form-urlencoded",
+            ajaxOptions:(function(_this:any){
+                return {
+                    beforeSend: function(request) {
+                        request.setRequestHeader("Authorization", "Bearer " + _this.vue.$store.state.token);
+                    },
+                }
+            }(this)),
+            sidePagination : "server", // 服务端处理分页
+            responseHandler:(function(_this:any){
+                return function(data:any){
+                    if(data.status === 0){
+                        if(data.pageNumber > data.totalPages && data.pageNumber > 1){   //删除最后一页的唯一数据时，自动刷新到前一页
+                            $(ele).bootstrapTable("refreshOptions",{"pageNumber":data.totalPages});
+                            return false;
+                        }
+                        if(callback && typeof callback == "function"){
+                            callback(data);
+                        }
+                        return{
+                            "total":data.data.totalElements,
+                            "rows":data.data[dataName] || []
+                        }
+                    }else if(data.status == 61003){
+                        _this.vue.$router.push("/login");
+                    }else{
+                        alert(data.message);
+                        return{
+                            "total":0,
+                            "rows":[]
+                        }
+                    }
+                }
+            }(this)),
+        };
+        return defaultOption;
     }
 
     creatTableClient(obj:any):void{ //客户端分页 && 传数据进来
@@ -49,8 +68,7 @@ class CreatTableMethod{
         let columnsArray:any = this.getColumnsArr(obj);
         let tableOption:Object = Object.assign({},this.tableOption,{
             data:obj.data,
-            sidePagination:obj.sidePagination,
-            queryParams: this.queryParams(),
+            sidePagination:"client",
             columns:columnsArray
         })
 
@@ -59,18 +77,23 @@ class CreatTableMethod{
     }
 
     creatTable(obj:any):void{   //ajax请求数据
-        if(obj.dataName){
-            this.dataName = obj.dataName;
+
+        let ele = obj.ele || this.ele;
+        let dataName = obj.dataName || this.dataName;
+        let callback = obj.callback || null;
+
+        if(obj.defaultOption){
+            Object.assign(this.tableOption,obj.defaultOption)
+        }else{
+            Object.assign(this.tableOption,this.getDefaultOption(ele,dataName,callback))
         }
-        if(obj.callback){
-            this.callback = obj.callback;
-        }
+
         let columnsArray:any = this.getColumnsArr(obj);
         let tableOption:Object = Object.assign({},this.tableOption,{
             url: commonInteface + obj.url,
-            queryParams: this.queryParams(),
+            queryParams:this.queryParams(obj.queryData,obj.isSearchObj),
             columns:columnsArray
-        })
+        },obj.refreshOption || {})
 
         $(obj.ele).bootstrapTable('destroy');
         $(obj.ele).bootstrapTable(tableOption);
@@ -114,14 +137,23 @@ class CreatTableMethod{
         return arr;
     }
 
-    queryParams(){  //配置参数
+    queryParams(searchObj:any = null,isSearchObj:any = null){  //配置参数
         var _this = this;
         return function(params:any){
             var temp:any = {
                 pageNumber: (params.offset - params.limit)/params.limit+2,
                 pageSize: params.limit,
             };
-            Object.assign(temp,_this.vue.userInfo,_this.vue.searchObj);
+
+            if(searchObj){
+                if(isSearchObj){
+                    Object.assign(temp,searchObj,_this.vue.searchObj);
+                }else{
+                    Object.assign(temp,searchObj);
+                }
+            }else{
+                Object.assign(temp,_this.vue.userInfo,_this.vue.searchObj);
+            }
             return temp;
         }
     };
